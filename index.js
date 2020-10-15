@@ -51,7 +51,7 @@ function runApp () {
                     addEmployee();
                     break;
 
-                case "view all employee by department":
+                case "View all employee by department":
                     viewByDept();
                     break;
 
@@ -155,3 +155,42 @@ function addEmployee () {
         })
 }
 
+function viewByDept () {
+    const question = [
+        {
+            name: "DptName",
+            type: "input",
+            message: "What department would you like to see?"
+        }
+    ]
+    inquirer.prompt (question)
+    .then(function(answer){
+        let query = "SELECT * FROM employee INNER JOIN role ON role.id = employee.role_id INNER JOIN department ON department.id and role.department_id WHERE department.dpt_name = ?"        
+        
+        connection.query(query, [answer.DptName], function (err, res){
+        console.table(res);
+        runApp()
+
+        })
+    })
+}
+    function viewByRole () {
+        const question = [
+            {
+                name: "roleName",
+                type: "input",
+                message: "What role would you like to see?"
+            }
+        ]
+        inquirer.prompt (question)
+        .then(function(answer){
+            let query = "SELECT * FROM role LEFT JOIN employee ON role.id = employee.role_id WHERE role.title = ?"        
+            
+            connection.query(query, [answer.roleName], function (err, res){
+            console.table(res);
+            runApp()
+    
+            })
+        })
+    
+    }

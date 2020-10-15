@@ -39,9 +39,9 @@ INSERT INTO department (dpt_name)
 VALUES ("Marketing");
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
-VALUES ("Mary","Moore",3,5);
+VALUES ("Mary","Moore",1,101);
 INSERT INTO employee (first_name, last_name, role_id, manager_id) 
-VALUES ("Mark","Sisley",4,5);
+VALUES ("Mark","Sisley",2,202);
 
 INSERT INTO role (title, salary, department_id) 
 VALUES ("Accoutant",65000, 1);
